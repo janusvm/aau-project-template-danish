@@ -1,0 +1,31 @@
+% incl/misc/titlepage.tex : rapportens titelblad
+% ------------------------------------------------------------------------------
+% Titelbladet genereres af makroen \aautitlepage, som er defineret i
+% /incl/pre/ext/aautitlepage.sty
+
+
+\pdfbookmark[0]{Titelblad}{titelblad}
+\aautitlepage{
+  \projectinfo{
+    \projecttitle
+  }{
+    \projecttheme
+  }{
+    \projectperiod
+  }{
+    Gruppe \projectgroup
+  }{
+    \parbox[t]{\textwidth}{\projectauthors}
+  }{
+    \parbox[t]{\textwidth}{\projectsupervisors}
+  }{
+    \today
+  }
+}{
+  \textbf{Institut for Matematiske Fag}\\
+  Skjernvej 4A\\
+  DK-9220 Aalborg Ø\\
+  \href{http://math.aau.dk}{http://math.aau.dk}
+}{
+  \input{incl/misc/abstract}
+}

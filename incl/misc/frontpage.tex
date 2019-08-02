@@ -1,0 +1,51 @@
+% incl/misc/frontpage.tex : rapportens forside
+% ------------------------------------------------------------------------------
+
+
+\backgroundsetup{
+  scale = 1,
+  angle=0,
+  opacity=1,
+  contents = {
+    \includegraphics[width=\paperwidth,height=\paperheight]{fig/img/aau/waves.pdf}
+  }
+}
+\BgThispage
+\pdfbookmark[0]{Forside}{forside}
+\begin{titlepage}
+  \centering
+  \phantom{}
+  \vspace{2cm}
+
+  % AAU-segl
+  \begin{minipage}[c]{0.2\paperwidth}
+    \centering
+    \makebox[0pt]{
+      \input{fig/tikz/aau-badge}
+    }
+  \end{minipage}
+
+  % Hovedindhold
+  \vspace{4cm}
+  {\fontfamily{bch}\selectfont
+    \fboxsep0pt\colorbox{white}{
+      \begin{minipage}{\textwidth}
+        \centering
+        \color{AAUblue1}
+
+        \vspace{2em}
+        {\Huge\bfseries\projecttitle}
+
+        {\Large\bfseries\projectsubtitle}
+
+        \bigskip
+        \parbox{\textwidth}{\centering\large\projectauthors}
+
+        \bigskip
+        {\bfseries\large{\projectnumber}-Projekt, Gruppe \projectgroup, \projectdegree}
+        \vspace{2em}
+      \end{minipage}
+    }
+  }
+
+\end{titlepage}

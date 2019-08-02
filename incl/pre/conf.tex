@@ -1,0 +1,102 @@
+% incl/pre/conf.tex : generelle indstillinger
+% ------------------------------------------------------------------------------
+% Denne fil indeholder indstillinger for opsætningen af rapporten
+
+
+% Brugerdefinerede farver ------------------------------------------------------
+% Officielle AAU-farver
+% https://www.design.aau.dk/om-aau-design/Farver/
+\definecolor{AAUblue1}{RGB}{ 33, 26, 82}
+\definecolor{AAUblue2}{RGB}{ 89, 79,191}
+\definecolor{AAUgrey1}{RGB}{ 84, 97,110}
+\definecolor{AAUgrey2}{RGB}{104,119,132}
+\definecolor{AAUgrey3}{RGB}{162,172,182}
+\definecolor{AAUgrey4}{RGB}{222,223,226}
+\definecolor{AAUgreen}{RGB}{157,187, 29}
+\definecolor{AAUteal} {RGB}{ 94,150,149}
+\definecolor{AAUred}  {RGB}{223,103, 82}
+
+% Sidehoved og sidefod ---------------------------------------------------------
+% http://mirrors.dotsrc.org/ctan/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+\fancyhead{}                            % ryd standardindhold
+\fancyhead[LE,RO]{Group \projectgroup}  % venstre på lige sider, højre på ulige
+\fancyhead[RE]{\leftmark}               % højre på ulige sider
+\fancyhead[LO]{\rightmark}              % venstre på ulige sider
+\fancyfoot{}                            % ryd standardindhold
+\fancyfoot[CE,CO]{\thepage}             % centrerede sidetal
+\pagestyle{fancy}                       % aktiver fancy stil
+
+% Overskrifter -----------------------------------------------------------------
+% http://mirrors.dotsrc.org/ctan/macros/latex/contrib/titlesec/titlesec.pdf
+
+% Kapitler vises med et tal i en farvet kasse
+\titleformat
+{\chapter}
+[hang]
+{\Huge\bfseries\color{white}}
+{\colorbox{AAUblue1}{\makebox[30pt]{\strut\thechapter}}}
+{0.5em}
+{\Huge\bfseries\color{AAUblue1}}
+
+% Dele skrives på to linjer
+\titleformat
+{\part}
+[display]
+{\Huge\bfseries\color{AAUblue1}\filcenter}
+{\huge\partname{} \thepart}
+{0em}
+{}
+
+% Juster titel og indholdsfortegnelsen mht. appendiks-siden
+\renewcommand{\appendixname}{Appendix}
+\renewcommand{\appendixtocname}{Appendicer}
+\renewcommand{\appendixpagename}{\textcolor{AAUblue1}{Appendicer}}
+\xpatchcmd{\addappheadtotoc}{{chapter}}{{part}}{}{}
+
+% Figurindstillinger -----------------------------------------------------------
+% Indstillinger for figurtekst
+% http://mirrors.dotsrc.org/ctan/macros/latex/contrib/caption/caption-eng.pdf
+\captionsetup{font=it,labelfont=bf}
+
+% Nyttige TiKZ-udvidelser
+% https://tex.stackexchange.com/q/42611
+\usetikzlibrary{arrows.meta}  % forskellige pilespidser
+\usetikzlibrary{calc}         % udvidede beregninger med koordinater
+
+% Prædefinerede styles til punkter og kanter i en graf
+\tikzstyle{point} = [fill,shape=circle,minimum size=3pt,inner sep=0pt]
+\tikzstyle{edge}  = [fill=white,midway,inner sep=1pt]
+
+% Algoritmer -------------------------------------------------------------------
+% Indstillinger for algorithm-blokke
+\floatname{algorithm}{Algoritme}
+\renewcommand{\listalgorithmname}{Algoritmer}
+
+% Kildekode --------------------------------------------------------------------
+% Syntax highlighting for Python-kode
+% https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+\lstdefinestyle{custompy}{
+  belowcaptionskip=\baselineskip,
+  breaklines=true,
+  language=Python,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{AAUblue1},
+  commentstyle=\itshape\color{AAUgrey3},
+  identifierstyle=\color{AAUblue2},
+  stringstyle=\color{AAUteal},
+}
+\lstset{language=Python,style=custompy,captionpos=b}
+\renewcommand{\lstlistingname}{Kildekode}
+\renewcommand{\lstlistlistingname}{Kildekode}
+
+% Indstillinger for autoref ----------------------------------------------------
+% https://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing#autoref
+\def\partautorefname{Del}
+\def\chapterautorefname{Kapitel}
+\def\sectionautorefname{Afsnit}
+\def\subsectionautorefname{Underafsnit}
+\def\figureautorefname{Figur}
+\def\tableautorefname{Tabel}
+\def\algorithmautorefname{Algoritme}
+\def\lstinputlistingautorefname{Kildekode}

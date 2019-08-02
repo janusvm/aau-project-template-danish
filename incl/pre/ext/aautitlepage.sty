@@ -1,0 +1,92 @@
+% aautitlepage.sty : makroer til at generere titelbladet
+% ------------------------------------------------------------------------------
+% Lettere modificeret udgave af filen macros.tex fra
+% https://github.com/jkjaer/aauLatexTemplates
+
+
+% BSD-3 LICENSE ----------------------------------------------------------------
+%
+% Copyright (c) 2018, Jesper Kjær Nielsen
+% Modifications copyright (c) 2019, Janus Valberg-Madsen
+% All rights reserved.
+
+% Redistribution and use in source and binary forms, with or without
+% modification, are permitted provided that the following conditions are met:
+
+% * Redistributions of source code must retain the above copyright notice, this
+% list of conditions and the following disclaimer.
+
+% * Redistributions in binary form must reproduce the above copyright notice,
+% this list of conditions and the following disclaimer in the documentation
+% and/or other materials provided with the distribution.
+
+% * Neither the name of the copyright holder nor the names of its
+% contributors may be used to endorse or promote products derived from
+% this software without specific prior written permission.
+
+% THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+% AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+% IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+% DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+% FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+% DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+% SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+% CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+% OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+% OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+% ------------------------------------------------------------------------------
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{aautitlepage}
+\usepackage{calc}
+\usepackage{lastpage}
+
+% Genererer et AAU-tematiseret titelblad
+\newcommand{\aautitlepage}[3]{
+  {
+    \ifx\titlepageleftcolumnwidth\undefined
+      \newlength{\titlepageleftcolumnwidth}
+      \newlength{\titlepagerightcolumnwidth}
+    \fi
+    \setlength{\titlepageleftcolumnwidth}{0.5\textwidth-\tabcolsep}
+    \setlength{\titlepagerightcolumnwidth}{\textwidth-2\tabcolsep-\titlepageleftcolumnwidth}
+
+    \thispagestyle{empty}
+    \noindent
+    \begin{tabular}{@{}ll@{}}
+      \parbox{\titlepageleftcolumnwidth}{
+        \includegraphics[width=\titlepageleftcolumnwidth]{fig/img/aau/logo-report.pdf}
+      }
+      &
+        \parbox{\titlepagerightcolumnwidth}{\raggedleft\sf\small#2}
+      \\
+      \bigskip &
+      \\
+      #1
+      &
+      \parbox[t]{\titlepagerightcolumnwidth}{
+        \textbf{Abstract}\bigskip\par
+        \fbox{\parbox{\titlepagerightcolumnwidth-2\fboxsep-2\fboxrule}{#3}}
+      }
+    \end{tabular}
+    \vfill
+    \noindent{\footnotesize\emph{Rapportens indhold er frit tilgængeligt, men offentliggørelse (med kildeangivelse) må kun ske efter aftale med forfatterne.}}
+    \clearpage
+  }
+}
+
+% Indsæt projektinfo
+\newcommand{\projectinfo}[7]{
+  \parbox[t]{\titlepageleftcolumnwidth}{
+    \textbf{Titel}\\\-\ #1\bigskip\par
+    \textbf{Tema}\\\-\ #2\bigskip\par
+    \textbf{Projektperiode}\\\-\ #3\bigskip\par
+    \textbf{Projektgruppe}\\\-\ #4\bigskip\par
+    \textbf{Deltager(e)}\\\-\ #5\bigskip\par
+    \textbf{Vejleder(e)}\\\-\ #6\bigskip\par
+    \textbf{Sidetal}\\\-\ \pageref{LastPage}\bigskip\par
+    \textbf{Afleveringsdato}\\\-\ #7
+  }
+}
+
+\endinput

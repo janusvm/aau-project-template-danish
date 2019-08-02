@@ -1,0 +1,25 @@
+% incl/misc/contents.tex :
+% ------------------------------------------------------------------------------
+
+\pdfbookmark[0]{Indhold}{indhold}
+
+% Indstillingerne i denne fil er grupperet, så de ikke påvirker andre dele
+\begingroup
+
+% Slå twoside fra midlertidigt for at undgår sideskift
+\makeatletter
+\@twosidefalse
+\makeatother
+
+% Placer indholdsfortegnelsen på sin egen side (bedst når den kun fylder en side)
+\tableofcontents
+\clearpage
+
+% Placer oversigtslisterne på efterfølgende sider
+\let\clearpage\relax
+\listoffigures
+\listoftables
+\listofalgorithms
+\lstlistoflistings
+
+\endgroup

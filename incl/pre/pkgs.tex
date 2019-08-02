@@ -1,0 +1,50 @@
+% incl/pre/pkgs.tex : pakker, som bruges i rapporten
+% ------------------------------------------------------------------------------
+% Makroer distribueres i pakker, som kan indlæses med \usepackage
+
+
+% Basis-pakker -----------------------------------------------------------------
+\usepackage[T1]{fontenc}           % for at kunne vise visse tegn og bogstaver
+\usepackage[utf8]{inputenc}        % for at kunne læse visse tegn og bogstaver
+\usepackage{babel}                 % sprogindstillinger
+\usepackage[square]{natbib}        % litteraturhenvisninger
+\usepackage{hyperref}              % diverse funktioner for links og referencer
+\usepackage{xpatch}                % til patching af makroer
+
+% Matematik-pakker -------------------------------------------------------------
+\usepackage{mathtools}             % matematik-makroer og blokke
+\usepackage{amssymb}               % yderligere matematiske symbolder
+\usepackage{amsthm}                % blokke til sætninger osv.
+\usepackage{bbm}                   % udvidet 'blackboard bold' skriftstil
+\usepackage{bm}                    % bedre fed skrift for matematiske symboler
+
+% Figur-pakker -----------------------------------------------------------------
+\usepackage[dvipsnames]{xcolor}    % til farvet skrift
+\usepackage{graphicx}              % billedhåndtering
+\usepackage{booktabs}              % bedre tabeller
+\usepackage{caption}               % indstillinger for billedtekst
+\usepackage{subcaption}            % gruppering af flere billeder sammen
+\usepackage{tikz}                  % generer vektorgrafik med LaTeX-kode
+\usepackage[chapter]{algorithm}    % algoritme-figurer
+\usepackage[noend]{algpseudocode}  % pseudokode
+\usepackage{listings}              % visning af kildekode
+
+% Styling-pakker ---------------------------------------------------------------
+\usepackage{microtype}             % forbedret justering af tekst
+\usepackage{emptypage}             % fjern sidetal på tomme sider
+\usepackage{fancyhdr}              % indstillinger for sidehoved/-fod
+\usepackage{titlesec}              % indstillinger for overskrifter
+\usepackage[margin=3cm]{geometry}  % indstillinger for sidemargen
+\usepackage[toc,page]{appendix}    % bedre appendicer
+\usepackage[some]{background}      % til at indsætte baggrundsbilleder
+
+% Skrifttyper ------------------------------------------------------------------
+% http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf
+% http://www.tug.dk/FontCatalogue/
+\usepackage{fourier}               % Adobe Utopia som primær skrifttype
+\usepackage{DejaVuSansMono}        % DejaVu Sans Mono til bl.a. kildekode
+
+% Inkluderede tredjepartspakker ------------------------------------------------
+% Pakken aautitlepage indholder modificerede makroer fra en tredjepart.
+% Se incl/pre/ext/aautitlepage.sty for detaljer
+\usepackage{incl/pre/ext/aautitlepage}

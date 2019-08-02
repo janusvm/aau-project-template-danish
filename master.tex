@@ -1,0 +1,81 @@
+% master.tex : master-fil for projektet
+% ------------------------------------------------------------------------------
+% Dette er hovedfilen for projektet, hvori indhold fra alle input-filer (tekst,
+% billeder, litteraturdatabaser, osv.) samles
+
+% Dokumenttypen 'book' er valgt pga. dens mange fleksible indstillinger
+% Se https://tex.stackexchange.com/a/36989/118167
+\documentclass[11pt,a4paper,twoside,openright,danish]{book}
+
+% Variabler, som bruges til automatisk at indsætte titel, forfattere, osv. på
+% forsiden og titelbladet.
+\def \projecttitle       {Projekttitel}
+\def \projectsubtitle    {Projektundertitel}
+\def \projecttheme       {Projekttema}
+\def \projectdegree      {Matematik}  % eller Matematik-Økonomi/Teknologi
+\def \projectperiod      {Efterårssemesteret 20XX}
+\def \projectnumber      {P1}
+\def \projectgroup       {X123}
+\def \projectauthors     {
+  Projektforfatter 1\\
+  Projektforfatter 2\\
+  Projektforfatter 3\\
+  Projektforfatter 4
+  % ...
+}
+\def \projectsupervisors {
+  Projektvejleder 1\\
+  Projektvejleder 2
+  % ...
+}
+
+% Preamblet indeholder alle de indstillinger og makroer, som skal indsættes for
+% hovedindholdet, og i denne skabelon samles det i filen aaumath.sty, som
+% definerer en pakke, der kan indlæses med \usepackage.
+\usepackage{aaumath}
+
+% Dokumentets indhold indsættes mellem \begin- og \end-makroerne for
+% 'document'-blokken
+\begin{document}
+
+% Dokumentets 'front matter' tælles ikke med ifm. antal sider og nummereres med
+% romerske tal. Herunder hører f.eks. forsiden, titelbladet, forordet og
+% indholdsfortegnelsen.
+\frontmatter
+\include{incl/misc/frontpage}
+\include{incl/misc/titlepage}
+\include{incl/misc/contents}
+
+% Dokumentets 'main matter' (hovedindhold) er der, hvor det meste indhold skal
+% sættes ind. Sider og overskrifter er nummererede med arabiske tal.
+\mainmatter
+
+% Input-filer bør opdeles således, at hver fil svarer til et kapitel. Makroen
+% \include indsætter et sideskift og indholdet fra den givne stil.
+
+% \include{incl/main/example1}
+% \include{incl/main/example2}
+% ...
+
+% Appendicer indsættes inde i en appendices-blok og bliver nummereret med
+% bogstaver i stedet for tal
+\begin{appendices}
+  % \include{incl/app/appendix1}
+  % \include{incl/app/appendix2}
+  % ..
+\end{appendices}
+
+% Dokumentets 'back matter' er til ekstra ting som f.eks. litteraturlisten.
+% Overskrifter bliver ikke nummereret her.
+\backmatter
+
+% Automatisk litteraturliste baseret på, hvilke kilder, der er blevet refereret
+% til i løbet af rapporten.
+\bibliographystyle{apalike}
+\bibliography{
+  incl/bib/books,
+  incl/bib/articles,
+  incl/bib/software
+}
+
+\end{document}
